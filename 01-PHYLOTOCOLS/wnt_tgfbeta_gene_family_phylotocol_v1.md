@@ -22,32 +22,21 @@ We will identify and classify from Beroe, and compare to Mnemiopsis the followin
 
 #### 2.1 Identify important ctenophore gene families using hidden Markov models (HHMs) and a tree-based approach 
 
-2.1.1 obtain HMMs for TGFbeta and Wnt gene families from pfam.xfam.org  
+2.1.1 build HMMs from Pang et al. 2010 and Pang et al. 2011 of Wnt, TGF-beta ligand receptor, SMAD, and Wnt.
 
 ```
-wget http://pfam.xfam.org/family/PF00019/hmm
-mv hmm tgfb.hmm
-wget http://pfam.xfam.org/family/PF00110/hmm
-mv hmm wnt.hmm
+hmmbuild pang_alignment.hmm
 ```
 
-2.1.2 search the translated B. ovata transcriptome and amino acid gene models and the Mnemiopsis leidyi 2.2 gene models against each HMM
+2.1.2 search the translated B. ovata transcriptome and amino acid gene models against each HMM
 
 ```
 ./hmm2aln.pl --hmm=<gene_family.hmm> --name=<out_prefix> --fasta=<fasta_file_to_search> --threads=40 > outfile.fa 2> std_err.txt
 ```
   
-2.1.3 estimate a gene tree with the B. ovata and M. leidy loci identified in step 2.1.3
+2.1.3 Concatenate the alignment produced in 2.1.2 to the Pang alignment used to create the hmm in 2.1.1
 
-```
-iqtree-omp -s [infile] -nt AUTO -bb 1000 -m TEST -pre [output prefix] > iq.out 2> iq.err &
-```
-
-2.1.4 we will prune non-target genes from the gene tree generated in step 2.12.2 using the script ```make_subalignment```. The output of this script is an alignment of only those genes within the clade descended from the most recent common ancestor of all genes with the specified prefix. The script is available here https://github.com/josephryan/make_subalignment. 
-
-```
-./make_subalignment --tree=<newick_treefile> --aln=<phylip_alignment> --root=<root_taxa> --pre=<prefix>
-```
+2.1.4 blank
 
 2.1.5 remove redundancy created by including both transcriptome and protein models in step 2.1.2. The goal being to have one sequence per genomic loci.
 
@@ -83,10 +72,13 @@ raxmlHPC-PTHREADS-SSE3 -d -T [number of threads] -p 12345 -m [model] -s infile.f
 raxmlHPC -m [model] -p 12345 -f b -t RAxML_bestTree -z outfile_boots -n RAxML_bestTree_bootstraps_applied > rax.stdout 2> rax.err &
 ```
 
-## 3 WORK COMPLETED SO FAR
+## 3 CHANGES AND WORK COMPLETED SO FAR
 
 Thu Jul 30 12:06:11 EDT 2020 - nothing
-
+Thu Aug  6 12:40:48 EDT 2020 - 
+    - starting with Pang alignments instead of PFAM hmms
+    - removed subalignment
+    - so far: created a beroe only tree using pfam hmm. Then realized initial plan had some holes.
 
 ## 4 REFERENCES
 
