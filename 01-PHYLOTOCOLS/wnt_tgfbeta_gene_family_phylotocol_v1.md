@@ -36,7 +36,7 @@ hmmbuild pang_alignment.hmm
   
 2.1.3 Concatenate the alignment produced in 2.1.2 to the Pang alignment used to create the hmm in 2.1.1
 
-2.1.4 blank
+2.1.4 removed
 
 2.1.5 remove redundancy created by including both transcriptome and protein models in step 2.1.2. The goal being to have one sequence per genomic loci.
 
@@ -75,9 +75,11 @@ raxmlHPC -m [model] -p 12345 -f b -t RAxML_bestTree -z outfile_boots -n RAxML_be
 ## 3 CHANGES AND WORK COMPLETED SO FAR
 
 Thu Jul 30 12:06:11 EDT 2020 - nothing
+
 Thu Aug  6 12:40:48 EDT 2020 - 
-    - starting with Pang alignments instead of PFAM hmms
-    - removed subalignment
+
+    - starting with Pang alignments instead of PFAM hmms, removed make_subalignment
+
     - so far: created a beroe only tree using pfam hmm. Then realized initial plan had some holes.
 
 ## 4 REFERENCES
