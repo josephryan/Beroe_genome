@@ -47,35 +47,35 @@ matemaker --assembly ../03-PLAT63/out_gapClosed.fa --insertsize=10000 --out=plat
 matemaker --assembly ../03-PLAT63/out_gapClosed.fa --insertsize=15000 --out=plat63.15k
 ```
 
-##CANU (varied the following parameters: estimated genome size, correctedErrorRate, corOutCoverage)
-<br> corOutCoverage: Only correct the longest reads up to this coverage; default 40
-<br>= correctedErrorRate: The allowed difference in an overlap between two corrected reads, expressed as fraction error.
+## CANU (varied the following parameters: estimated genome size, correctedErrorRate, corOutCoverage)
+<br>corOutCoverage: Only correct the longest reads up to this coverage; default 40
+<br>correctedErrorRate: The allowed difference in an overlap between two corrected reads, expressed as fraction error.
 
-####canu89m.20k
+#### canu89m.20k
 
 ```
 canu -p beroe_canu89m -d 01-beroe_canu89m -pacbio  /bwdata1/mdebiasse/05-ENA/01-BEROE/02-PACBIO_READS/beroe_pacbio_raw_reads_concat.fasta -genomeSize=89m
 ```
 
-####canu89m.cer0.075.20k
+#### canu89m.cer0.075.20k
 
 ```
 canu -p beroe_canu89m.cer0.075 -d 02-beroe_canu89m.cer0.075 -genomeSize=89m -correctedErrorRate=0.075 -pacbio /bwdata1/mdebiasse/05-ENA/01-BEROE/02-PACBIO_READS/beroe_pacbio_raw_reads_concat.fasta
 ```
 
-####canu89m.cer0.15.coc200.20k
+#### canu89m.cer0.15.coc200.20k
 
 ```
 canu -p beroe_canu89m.cer0.15.coc200 -d 03-beroe_canu89m.cer0.15.coc200 -genomeSize=89m -correctedErrorRate=0.15 -corOutCoverage=200 -pacbio /bwdata1/mdebiasse/05-ENA/01-BEROE/02-PACBIO_READS/beroe_pacbio_raw_reads_concat.fasta
 ```
 
-####canu120m.cer0.25.coc200.20k
+#### canu120m.cer0.25.coc200.20k
 
 ```
 canu -p beroe_canu120m.cer0.25.coc200 -d 04-beroe_canu120m.cer0.25.coc200 -genomeSize=120m -correctedErrorRate=0.25 -corOutCoverage=200 -pacbio /bwdata1/mdebiasse/05-ENA/01-BEROE/02-PACBIO_READS/beroe_pacbio_raw_reads_concat.fasta
 ```
 
-####canu120m.cer0.30.coc200.20k
+#### canu120m.cer0.30.coc200.20k
 
 ```
 canu -p beroe_canu120m.cer0.30.coc200 -d 05-beroe_canu120m.cer0.30.coc200 -genomeSize=120m -correctedErrorRate=0.30 -corOutCoverage=200 -pacbio /bwdata1/mdebiasse/05-ENA/01-BEROE/02-PACBIO_READS/beroe_pacbio_raw_reads_concat.fasta
