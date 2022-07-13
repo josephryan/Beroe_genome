@@ -81,6 +81,15 @@ Thu Aug  6 12:40:48 EDT 2020 -
     - starting with Pang alignments instead of PFAM hmms, removed make_subalignment
 
     - so far: created a beroe only tree using pfam hmm. Then realized initial plan had some holes.
+    
+Wed Jul  13 2021 - 
+
+    - We used this approach for the opsin phylogeny, but realized that we need additional outgroup sequences to identify Mnemiopsis opsin3 
+    
+    - So we are using hmm2aln.pl to pull out all opsin-related genes from human, fly, Capitella, Nematostella, Hydra, and Mnemiopsis
+    
+    - We will then run iqtree to see if Mnemiopsis opsin3 is related to any bilaterian or cnidarian sequences
+
 
 ## 4 REFERENCES
 
