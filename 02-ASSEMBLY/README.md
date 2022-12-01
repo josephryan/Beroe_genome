@@ -4,4 +4,4 @@
 
 * break_big_gaps.pl - script used to remove large gaps from scaffolded assembly
 
-* libraries.txt - input file used by SSPACE
+* libraries.txt - input file used by SSPACE 
