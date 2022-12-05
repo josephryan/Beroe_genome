@@ -77,23 +77,28 @@ OrthoFinder analysis was performed using Bova1.3 protein models (Bova1.3.aa), B.
 orthofinder -t 18 -f 05-MISSED_PREDICTIONS > of.missed.out 2> of.missed.err &
 
 perl count_missed_genes.pl > missed_gene_predictions.out
+```
 
 ### Confirm missed gene predictions
-diamond makedb --in /bwdata1/ahernandez6/12-BEROE_GENOME/01-DATA/B20H.trinity.Trinity.fasta --db B20H.trinity.Trinity.fasta
+```
+diamond makedb --in B20H.trinity.Trinity.fasta --db B20H.trinity.Trinity.fasta
 
 diamond makedb --in Hcv1av93_ML2.2.fa --db Hcv1av93_ML2.2.fa
 
 diamond makedb --in Bova1.3.aa --db Bova1.3.aa
 
 perl confirm_missed_predictions.pl > confirm_missed.out 
-
+```
 ### Produce GFF with missing predictions
+```
 perl extract_transcript_blocks.pl > extract_transcript_blocks.out
+```
 
 ### Reannotate genes using new GFF
-/usr/local/augustus-3.3.4/scripts/getAnnoFasta.pl extract_transcript_blocks.out --seqfile=/bwdata1/jfryan/07-BEROE/80-RERUN_MDEBIASSE/13-GENOME_FILES_AND_CMDS/Bova1.3.fa
+```
+/usr/local/augustus-3.3.4/scripts/getAnnoFasta.pl extract_transcript_blocks.out --seqfile=Bova1.3.fa
 
-perl finalize_gff_names.pl ../03-CONFIRM_MISSED_PREDICTIONS/extract_transcript_blocks.out > Bova1.4.gff
+perl finalize_gff_names.pl extract_transcript_blocks.out > Bova1.4.gff
 
 perl -pi -e 's/Bova1_3/Bova1_4/g' Bova1.4.gff
 
