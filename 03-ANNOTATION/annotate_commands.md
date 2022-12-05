@@ -1,17 +1,17 @@
 # COMMANDS USED TO ANNOTATE BEROE GENOME
 
-### Add appropriate definition lines
+### Update assembly definition lines
 ```
 replace_deflines.pl --fasta=scaffolds.reduced.fa --prefix=Bova1.0 --pad=4 > Bova_scf_5k_gaps_removed_redundans.fa
 ```
-scaffolds.reduced.fa is the final genome assembly file after redundancy was remvoved
+scaffolds.reduced.fa is the final genome assembly file
 
 ### Sort sequences by size
 ```
 sort_fasta_by_size.pl Bova_scf_5k_gaps_removed_redundans.fa > Bova_scf_5k_gaps_removed_redundans_sorted.fa
 ```
 
-### Update definition lines
+### Update definition lines after sorting
 ```
 replace_deflines.pl --fasta=Bova_scf_5k_gaps_removed_redundans_sorted.fa --prefix=Bova1_1 --pad=4 > Bova1.1.fa
 ```
@@ -30,7 +30,7 @@ samtools view --threads 250 -S -b Aligned.out.sam > raw_rnaseq_v_Bova1.1.bam
 samtools sort --threads 250 -n -o raw_rnaseq_v_Bova1.1.sorted.bam raw_rnaseq_v_Bova1.1.bam > st.sort.out 2> st.sort.err &
 ```
 
-### Run Braker for gene predictions
+### Run braker for gene predictions
 ```
 braker.pl --genome=$PWD/Bova1.1.fa --useexisting --species=human --bam=$PWD/raw_rnaseq_v_Bova1.1.sorted.bam --AUGUSTUS_CONFIG_PATH=$PWD/aug_config --AUGUSTUS_BIN_PATH=/usr/local/augustus-3.4.0/bin/ --AUGUSTUS_SCRIPTS_PATH=/usr/local/augustus-3.4.0/scripts > $PWD/braker.out 2> $PWD/braker.err
 ```
@@ -47,11 +47,10 @@ braker.pl --genome=$PWD/Bova1.1.fa --useexisting --species=human --bam=$PWD/raw_
 ### Standardize and sort braker GFF file
 ```
 agat_convert_sp_gxf2gxf.pl --gff braker.gff -o out.gff
-
 ```
 
 # COMMANDS TO REANNOTATE ASSEMBLY AND INCORPORATE MISSED GENE PREDICTIONS
-The mitochondrial genome was removed in the Bova1.2 assembly. We are renaming the assembly and annotations Bova1.3 for reannotation below.
+The mitochondrial genome was removed for the Bova1.2 version of the assembly. We are renaming the assembly and annotations Bova1.3 for reannotation below.
 
 ### Produce a new GFF with appropriate gene names
 ```
@@ -71,7 +70,7 @@ perl identify_seqs_w_stops.pl tmp.aa > tmp2.aa
 
 blastp -num_threads 40 -db uniprot_sprot.fasta -query tmp2.aa -evalue 0.001 > tmp2.aa_v_uniprot.blastp
 ```
-### Identify and annotate missed gene predictions
+### Identify missed gene predictions
 
 OrthoFinder analysis was performed using Bova1.3 protein models (Bova1.3.aa), B. ovata transcripts collected at 20 hours post fertilization (ENA accession ERR2205121), H. californensis protein models (Hcv1av93_model_proteins.pep), and M. leidyi protein models (ML2.2.aa)
 ```
@@ -79,6 +78,7 @@ orthofinder -t 18 -f 05-MISSED_PREDICTIONS > of.missed.out 2> of.missed.err &
 
 perl count_missed_genes.pl > missed_gene_predictions.out
 
+### Confirm missed gene predictions
 diamond makedb --in /bwdata1/ahernandez6/12-BEROE_GENOME/01-DATA/B20H.trinity.Trinity.fasta --db B20H.trinity.Trinity.fasta
 
 diamond makedb --in Hcv1av93_ML2.2.fa --db Hcv1av93_ML2.2.fa
@@ -87,8 +87,10 @@ diamond makedb --in Bova1.3.aa --db Bova1.3.aa
 
 perl confirm_missed_predictions.pl > confirm_missed.out 
 
+### Produce GFF with missing predictions
 perl extract_transcript_blocks.pl > extract_transcript_blocks.out
 
+### Reannotate genes using new GFF
 /usr/local/augustus-3.3.4/scripts/getAnnoFasta.pl extract_transcript_blocks.out --seqfile=/bwdata1/jfryan/07-BEROE/80-RERUN_MDEBIASSE/13-GENOME_FILES_AND_CMDS/Bova1.3.fa
 
 perl finalize_gff_names.pl ../03-CONFIRM_MISSED_PREDICTIONS/extract_transcript_blocks.out > Bova1.4.gff
