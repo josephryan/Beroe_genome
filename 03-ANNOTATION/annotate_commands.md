@@ -1,0 +1,101 @@
+# COMMANDS USED TO ANNOTATE BEROE GENOME
+
+### Add appropriate definition lines
+```
+replace_deflines.pl --fasta=scaffolds.reduced.fa --prefix=Bova1.0 --pad=4 > Bova_scf_5k_gaps_removed_redundans.fa
+#scaffolds.reduced.fa is the final genome assembly file after redundancy was remvoved
+```
+
+### Sort sequences by size
+```
+sort_fasta_by_size.pl Bova_scf_5k_gaps_removed_redundans.fa > Bova_scf_5k_gaps_removed_redundans_sorted.fa
+```
+
+### Update definition lines
+```
+replace_deflines.pl --fasta=Bova_scf_5k_gaps_removed_redundans_sorted.fa --prefix=Bova1_1 --pad=4 > Bova1.1.fa
+```
+
+### Align unassembled transcripts to genome assembly
+```
+STAR --runThreadN 45 --runMode genomeGenerate --genomeFastaFiles Bova1.1.fa
+
+STAR --runThreadN 45 --genomeDir GenomeDir/ --readFilesIn B10H-3_S4_L001_R1_001.fastq,B10H-3_S4_L002_R1_001.fastq,B10H-3_S4_L003_R1_001.fastq,B10H-3_S4_L004_R1_001.fastq,Be0H-1_S1_L001_R1_001.fastq,Be0H-1_S1_L002_R1_001.fastq,Be0H-1_S1_L003_R1_001.fastq,Be0H-1_S1_L004_R1_001.fastq,Be20H-4_S5_L001_R1_001.fastq,Be20H-4_S5_L002_R1_001.fastq,Be20H-4_S5_L003_R1_001.fastq,Be20H-4_S5_L004_R1_001.fastq,Be6H-2_S3_L001_R1_001.fastq,Be6H-2_S3_L002_R1_001.fastq,Be6H-2_S3_L003_R1_001.fastq,Be6H-2_S3_L004_R1_001.fastq,BeJ-5_S6_L001_R1_001.fastq,BeJ-5_S6_L002_R1_001.fastq,BeJ-5_S6_L003_R1_001.fastq,BeJ-5_S6_L004_R1_001.fastq B10H-3_S4_L001_R2_001.fastq,B10H-3_S4_L002_R2_001.fastq,B10H-3_S4_L003_R2_001.fastq,B10H-3_S4_L004_R2_001.fastq,Be0H-1_S1_L001_R2_001.fastq,Be0H-1_S1_L002_R2_001.fastq,Be0H-1_S1_L003_R2_001.fastq,Be0H-1_S1_L004_R2_001.fastq,Be20H-4_S5_L001_R2_001.fastq,Be20H-4_S5_L002_R2_001.fastq,Be20H-4_S5_L003_R2_001.fastq,Be20H-4_S5_L004_R2_001.fastq,Be6H-2_S3_L001_R2_001.fastq,Be6H-2_S3_L002_R2_001.fastq,Be6H-2_S3_L003_R2_001.fastq,Be6H-2_S3_L004_R2_001.fastq,BeJ-5_S6_L001_R2_001.fastq,BeJ-5_S6_L002_R2_001.fastq,BeJ-5_S6_L003_R2_001.fastq,BeJ-5_S6_L004_R2_001.fastq > STAR.out 2> STAR.err &
+```
+
+### Sort and convert alignments to BAM
+```
+samtools view --threads 250 -S -b Aligned.out.sam > raw_rnaseq_v_Bova1.1.bam
+
+samtools sort --threads 250 -n -o raw_rnaseq_v_Bova1.1.sorted.bam raw_rnaseq_v_Bova1.1.bam > st.sort.out 2> st.sort.err &
+```
+
+### Run breaker for gene predictions
+```
+braker.pl --genome=$PWD/Bova1.1.fa --useexisting --species=human --bam=$PWD/raw_rnaseq_v_Bova1.1.sorted.bam --AUGUSTUS_CONFIG_PATH=$PWD/aug_config --AUGUSTUS_BIN_PATH=/usr/local/augustus-3.4.0/bin/ --AUGUSTUS_SCRIPTS_PATH=/usr/local/augustus-3.4.0/scripts > $PWD/braker.out 2> $PWD/braker.err
+```
+
+### Annotate genes
+```
+/usr/local/augustus-3.4.0/scripts/gtf2gff.pl <braker.gtf --out=braker.gff
+
+/usr/local/augustus-3.4.0/scripts/gffGetmRNA.pl --genome=../Bova1.1.fa --mrna=braker.cds
+
+/usr/local/augustus-3.4.0/scripts/getAnnoFasta.pl braker.gff --seqfile=../Bova1.1.fa
+```
+
+### Standardize and sort braker GFF file
+```
+agat_convert_sp_gxf2gxf.pl --gff braker.gff -o out.gff
+
+```
+
+# COMMANDS TO REANNOTATE ASSEMBLY AND INCORPORATE MISSED GENE PREDICTIONS
+The mitochondrial genome was removed in the Bova1.2 assembly and was renamed the Bova1.3 assembly for reannotation.
+
+### Produce GFF with appropriate gene names
+```
+perl finalize_gff_names.pl
+```
+Output is out2.gff
+
+### Check gene models for internal stops 
+```
+/usr/local/augustus-3.3.4/scripts/getAnnoFasta.pl out2.gff --seqfile=Bova1.3.fa
+
+blastx -num_threads 40 -db uniprot_sprot.fasta -query out2.mrna -evalue 0.001 -outfmt "7 qacc qstart" > tmp3.blastx
+
+perl translate_cds.pl out2.mrna > tmp.aa
+
+perl identify_seqs_w_stops.pl tmp.aa > tmp2.aa
+
+blastp -num_threads 40 -db uniprot_sprot.fasta -query tmp2.aa -evalue 0.001 > tmp2.aa_v_uniprot.blastp
+```
+### Identify and annotate missed gene predictions
+
+OrthoFinder analysis was performed using B. ovata protein models, transcripts, H. californensis protein models, and M. leidyi protein models
+```
+orthofinder -t 18 -f 05-MISSED_PREDICTIONS > of.missed.out 2> of.missed.err &
+
+perl count_missed_genes.pl > missed_gene_predictions.out
+
+diamond makedb --in /bwdata1/ahernandez6/12-BEROE_GENOME/01-DATA/B20H.trinity.Trinity.fasta --db B20H.trinity.Trinity.fasta
+
+diamond makedb --in Hcv1av93_ML2.2.fa --db Hcv1av93_ML2.2.fa
+
+diamond makedb --in Bova1.3.aa --db Bova1.3.aa
+
+perl confirm_missed_predictions.pl > confirm_missed.out 
+
+perl extract_transcript_blocks.pl > extract_transcript_blocks.out
+
+/usr/local/augustus-3.3.4/scripts/getAnnoFasta.pl extract_transcript_blocks.out --seqfile=/bwdata1/jfryan/07-BEROE/80-RERUN_MDEBIASSE/13-GENOME_FILES_AND_CMDS/Bova1.3.fa
+
+perl finalize_gff_names.pl ../03-CONFIRM_MISSED_PREDICTIONS/extract_transcript_blocks.out > Bova1.4.gff
+
+perl -pi -e 's/Bova1_3/Bova1_4/g' Bova1.4.gff
+
+gffread -V -H -x Bova1.4.cds -y Bova1.4.aa -g Bova1.4.fa -E Bova1.4.gff 2> Bova1.4.gff.warnings > Bova1.4.gff.gffread
+```
+
+
