@@ -30,7 +30,7 @@ samtools sort --threads 250 -n -o raw_rnaseq_v_Bova1.1.sorted.bam raw_rnaseq_v_B
 
 ### Run braker for gene predictions
 ```
-braker.pl --genome=$PWD/Bova1.1.fa --useexisting --species=human --bam=$PWD/raw_rnaseq_v_Bova1.1.sorted.bam --AUGUSTUS_CONFIG_PATH=$PWD/aug_config --AUGUSTUS_BIN_PATH=/usr/local/augustus-3.4.0/bin/ --AUGUSTUS_SCRIPTS_PATH=/usr/local/augustus-3.4.0/scripts > $PWD/braker.out 2> $PWD/braker.err
+braker.pl --genome=Bova1.1.fa --useexisting --species=human --bam=raw_rnaseq_v_Bova1.1.sorted.bam --AUGUSTUS_CONFIG_PATH=$PWD/aug_config --AUGUSTUS_BIN_PATH=/usr/local/augustus-3.4.0/bin/ --AUGUSTUS_SCRIPTS_PATH=/usr/local/augustus-3.4.0/scripts > braker.out 2> braker.err
 ```
 
 ### Annotate genes
