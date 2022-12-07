@@ -2,7 +2,7 @@
 
 * annotate_commands.md - commands used to annotate Beroe genome
 
-* replace_deflines.pl available [here] (https://github.com/josephryan/JFR-PerlModules)
+* replace_deflines.pl available [here](https://github.com/josephryan/JFR-PerlModules)
 
 * sort_fasta_by_size.pl - script to sort sequences by length (requires [JFR-PerlModules](https://github.com/josephryan/JFR-PerlModules))
 
