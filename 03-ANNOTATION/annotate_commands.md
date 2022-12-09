@@ -46,13 +46,19 @@ agat_convert_sp_gxf2gxf.pl --gff braker.gff -o out.gff
 ```
 
 # COMMANDS TO REANNOTATE ASSEMBLY AND INCORPORATE MISSED GENE PREDICTIONS
-The mitochondrial genome was removed for the Bova1.2 version of the assembly. We are renaming the assembly and annotations Bova1.3 for reannotation below.
+The mitochondrial genome was removed and the assembly and annotations were renamed Bova1.3 for reannotation below.
 
 ### Produce a new GFF with appropriate gene names
 ```
 perl finalize_gff_names.pl
 ```
 Output is out2.gff
+
+### Rename assembly
+```
+mv Bova1.1.fa Bova1.3.fa
+perl -pi -e 's/^>Bova1_1/>Bova1_3/' Bova1.3.fa
+```
 
 ### Check gene models for internal stops 
 ```
