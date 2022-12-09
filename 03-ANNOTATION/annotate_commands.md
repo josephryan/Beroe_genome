@@ -69,6 +69,10 @@ OrthoFinder analysis was performed using Bova1.3 protein models (Bova1.3.aa), B.
 orthofinder -t 18 -f 05-MISSED_PREDICTIONS > of.missed.out 2> of.missed.err &
 perl count_missed_genes.pl > missed_gene_predictions.out
 ```
+This script produces an output file that lists orthogroups containing B. ovata transcripts but lacks B. ovata gene predictions. Orthogroups are broken into the following categories:
+* complete - orthogroup contains protein models from H. californensis and M. leidyi and B. ovata trnascripts
+* No ML - orthogroup only contains protein models from H. californensis and B. ovata transcripts
+* No HC - orthogroup only contains protein models from M. leidyi and B. ovata transcripts
 
 ### Confirm missed gene predictions
 ```
