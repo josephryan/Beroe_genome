@@ -64,15 +64,15 @@ blastp -num_threads 40 -db uniprot_sprot.fasta -query tmp2.aa -evalue 0.001 > tm
 ```
 ### Identify missed gene predictions
 
-OrthoFinder analysis was performed using Bova1.3 protein models (Bova1.3.aa), B. ovata transcripts collected at 20 hours post fertilization (ENA accession ERR2205121), H. californensis protein models (Hcv1av93_model_proteins.pep), and M. leidyi protein models (ML2.2.aa)
+OrthoFinder analysis was performed using Bova1.3 protein models (Bova1.3.aa), *B. ovata* transcripts collected at 20 hours post fertilization (ENA accession ERR2205121), *Hormiphora californensis* protein models (Hcv1av93_model_proteins.pep), and *Mnemiopsis leidyi* protein models (ML2.2.aa)
 ```
 orthofinder -t 18 -f 05-MISSED_PREDICTIONS > of.missed.out 2> of.missed.err &
 perl count_missed_genes.pl > missed_gene_predictions.out
 ```
-This script produces an output file that lists orthogroups containing B. ovata transcripts but lacks B. ovata gene predictions. Orthogroups are broken into the following categories:
-* complete - orthogroup contains protein models from H. californensis and M. leidyi and B. ovata trnascripts
-* No ML - orthogroup only contains protein models from H. californensis and B. ovata transcripts
-* No HC - orthogroup only contains protein models from M. leidyi and B. ovata transcripts
+This script produces an output file that lists OrthoFinder orthogroups containing *B. ovata* transcripts but lacking *B. ovata* gene predictions. Orthogroups are broken into the following categories:
+* complete - orthogroup contains protein models from *H. californensis* and *M. leidyi* and *B. ovata* transcripts
+* No ML - orthogroup only contains protein models from *H. californensis* and *B. ovata* transcripts
+* No HC - orthogroup only contains protein models from *M. leidyi* and *B. ovata* transcripts
 
 ### Confirm missed gene predictions
 ```
