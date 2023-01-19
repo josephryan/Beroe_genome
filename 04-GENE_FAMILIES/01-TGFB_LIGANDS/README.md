@@ -1,4 +1,4 @@
-# TGF-BETA LIGAND PHYLOGENETIC ANALYSIS
+# Commands, alignment file, and custom scripts for analyses
 
 * tgfb_ligand_commands.md - commands to perform phylogenetic analyses of TGF-Beta ligands
 
