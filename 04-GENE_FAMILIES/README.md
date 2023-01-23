@@ -1,12 +1,15 @@
 # Gene family analyses
 
 ## 01-TGFB_LIGANDS
-Commands, custom scripts, and alignment file for phylogenetic analyses of TGF-beta ligands
+Commands and alignment file for phylogenetic analyses of TGF-beta ligands
 
 ## 02-TGFB_RECEPTORS
 Commands and alignment file for phylogenetic analyses of TGF-beta receptors
 
-## 03-OPSINS
+## 03-WNT_LIGANDS
+Commands and alignment file for phylogenetic analyses of Wnt ligands
+
+## 04-OPSINS
 Commands and alignment file for phylogenetic analyses of opsins
 
 ## CUSTOM SCRIPTS USED FOR ALIGNMENT FORMATTING
