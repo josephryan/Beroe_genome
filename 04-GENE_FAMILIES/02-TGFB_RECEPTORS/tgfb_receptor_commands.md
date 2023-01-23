@@ -7,6 +7,7 @@ hmmbuild -O Pang.TGFBR.adjusted.stockholm Pang.TGFBR.hmm pang.rec.fa > hmmbuild.
 esl-reformat -o Pang.TGFBR.adjusted.fa afa Pang.TGFBR.adjusted.stockholm > esl-reformat.out 2> esl-reformat.err
 perl remove_dots_and_lc.pl Pang.TGFBR.adjusted.fa  > Pang.rec.adjusted.nodotsallcaps.fa
 ```
+
 Fixes tildes at the beginning of sequences
 ```
 perl -pi.orig -e 's/^\~+/----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/' Pang.rec.adjusted.nodotsallcaps.fa
