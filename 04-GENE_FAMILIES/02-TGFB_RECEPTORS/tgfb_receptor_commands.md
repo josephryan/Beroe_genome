@@ -55,10 +55,10 @@ perl rename_remove_seqs.pl > Bo_Hc_Pang.rec.renames.fa
 
 ### MAXIMUM-LIKELIHOOD ANALYSES
 ```
-iqtree-omp -s ../05-SUBALIGNMENT/Bo_Hc_Pang.rec.renames.fa -nt AUTO -bb 1000 -m TEST -pre model_test
-raxmlHPC-PTHREADS-SSE3 -T 100 -p 12345 -# 25 -m PROTGAMMAAUTO -s ../05-SUBALIGNMENT/Bo_Hc_Pang.rec.renames.fa -n out_mp > rax.stdout 2> rax.err &
-raxmlHPC-PTHREADS-SSE3 -d -f a -x 12345 -T 40 -p 12345 -# 25 -m PROTGAMMAAUTO -s ../05-SUBALIGNMENT/Bo_Hc_Pang.rec.renames.fa -n out_rand > rax.stdout 2> rax.err &
-raxmlHPC -f e -m PROTGAMMALG -t ../06-IQTREE/model_test.treefile -s ../05-SUBALIGNMENT/Bo_Hc_Pang.rec.renames.fa -n iq > rax.iq.stdout 2> rax.iq.err &
-raxmlHPC -f e -m PROTGAMMALG -t ../07-RAXML_PARS/RAxML_bestTree.out_mp -s ../05-SUBALIGNMENT/Bo_Hc_Pang.rec.renames.fa -n mp > rax.mp.stdout 2> rax.mp.err &
-raxmlHPC -f e -m PROTGAMMALG -t ../08-RAXML_RAND/RAxML_bestTree.out_rand -s ../05-SUBALIGNMENT/Bo_Hc_Pang.rec.renames.fa -n rand > rax.rand.stdout 2> rax.rand.err &
+iqtree-omp -s Bo_Hc_Pang.rec.renames.fa -nt AUTO -bb 1000 -m TEST -pre model_test
+raxmlHPC-PTHREADS-SSE3 -T 100 -p 12345 -# 25 -m PROTGAMMAAUTO -s Bo_Hc_Pang.rec.renames.fa -n out_mp > rax.stdout 2> rax.err &
+raxmlHPC-PTHREADS-SSE3 -d -f a -x 12345 -T 40 -p 12345 -# 25 -m PROTGAMMAAUTO -s Bo_Hc_Pang.rec.renames.fa -n out_rand > rax.stdout 2> rax.err &
+raxmlHPC -f e -m PROTGAMMALG -t model_test.treefile -s Bo_Hc_Pang.rec.renames.fa -n iq > rax.iq.stdout 2> rax.iq.err &
+raxmlHPC -f e -m PROTGAMMALG -t RAxML_bestTree.out_mp -s Bo_Hc_Pang.rec.renames.fa -n mp > rax.mp.stdout 2> rax.mp.err &
+raxmlHPC -f e -m PROTGAMMALG -t RAxML_bestTree.out_rand -s Bo_Hc_Pang.rec.renames.fa -n rand > rax.rand.stdout 2> rax.rand.err &
 ```
