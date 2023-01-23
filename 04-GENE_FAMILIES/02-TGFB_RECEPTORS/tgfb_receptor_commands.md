@@ -1,4 +1,4 @@
-#COMMANDS USED FOR TGF-BETA RECEPTOR ANALYSIS
+# COMMANDS USED FOR TGF-BETA RECEPTOR ANALYSIS
 
 ### Build custom hidden Markov model (HMM)
 ```
@@ -13,7 +13,7 @@ Fixes tildes at the beginning of sequences
 perl -pi.orig -e 's/^\~+/----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/' Pang.rec.adjusted.nodotsallcaps.fa
 ```
 
-###ALIGN BEROE OVATA PROTEIN SEQUENCES TO HMM
+### ALIGN BEROE OVATA PROTEIN SEQUENCES TO HMM
 ```
 hmm2aln.pl --hmm=pang.rec.hmm --name=Bo_receptors --fasta=Bova1.4.aa --threads=40 > Bo_hmm2aln.out 2> Bo_hmm2aln.err
 ```
