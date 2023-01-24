@@ -23,9 +23,9 @@ cat pang.ligands.adjusted.nodotsallcaps.fa Bo_hmm2aln.out Hc_hmm2aln.out > Bo_Hc
 iqtree-omp -s Bo_Hc_Pang.ligands.fa -nt AUTO -bb 1000 -m LG -pre prelim
 ```
 
-We renamed TGF-beta ligand sequences for clarity
+We removed isoforms and renamed TGF-beta ligand sequences for clarity
 ```
-perl rename_remove_seqs.pl > Bo_Hc_Pang.ligands.renames.fa
+perl rename_remove_seqs_tgfb_ligands.pl > Bo_Hc_Pang.ligands.renames.fa
 ```
 
 ### MAXIMUM-LIKELIHOOD ANALYSES
