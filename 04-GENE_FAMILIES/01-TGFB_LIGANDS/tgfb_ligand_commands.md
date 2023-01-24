@@ -23,9 +23,13 @@ cat pang.ligands.adjusted.nodotsallcaps.fa Bo_hmm2aln.out Hc_hmm2aln.out > Bo_Hc
 iqtree-omp -s Bo_Hc_Pang.ligands.fa -nt AUTO -bb 1000 -m LG -pre prelim
 ```
 
-### MAXIMUM-LIKELIHOOD ANALYSES
+We renamed TGF-beta ligand sequences for clarity
 ```
 perl rename_remove_seqs.pl > Bo_Hc_Pang.ligands.renames.fa
+```
+
+### MAXIMUM-LIKELIHOOD ANALYSES
+```
 iqtree-omp -s Bo_Hc_Pang.ligands.renames.fa -nt AUTO -bb 1000 -m TEST -pre model_test
 raxmlHPC-PTHREADS-SSE3 -d -f a -x 12345 -T 40 -p 12345 -# 25 -m PROTGAMMAAUTO -s Bo_Hc_Pang.ligands.renames.fa -n out_rand > rax.stdout 2> rax.err &
 raxmlHPC-PTHREADS-SSE3 -T 100 -p 12345 -# 25 -m PROTGAMMAAUTO -s Bo_Hc_Pang.ligands.renames.fa -n out_mp > rax.stdout 2> rax.err &
