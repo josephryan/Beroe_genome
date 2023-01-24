@@ -27,7 +27,7 @@ We removed Pdu_Wnt9 because it contained 91% gaps
 iqtree-omp -s Bo_Hc_Pang.wnt.fa -nt AUTO -bb 1000 -m LG -pre prelim
 ```
 
-We renamed Wnt sequenced for clarity
+We renamed Wnt sequences for clarity
 ```
 perl rename_wnt_seqs.pl > Bo_Hc_Pang.wnt.renames.fa
 ```
