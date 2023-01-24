@@ -1,4 +1,4 @@
-# Commands and alignment file for Wnt ligand analysis
+# Commands, alignment file, and custom script for Wnt ligand analysis
 
 * wnt_ligands_commands.md - commands to perform phylogenetic analyses
 

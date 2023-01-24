@@ -1,4 +1,4 @@
-# Commands and alignment file for TGF-beta receptor analysis
+# Commands, alignment file, and custom script for TGF-beta receptor analysis
 
 * tgfb_receptor_commands.md - commands to perform phylogenetic analyses
 
