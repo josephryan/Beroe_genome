@@ -2,6 +2,6 @@
 
 * wnt_ligands_commands.md - commands to perform phylogenetic analyses
 
-* pang.wnt.msa - stockholm alignment file from Pang et al. (2011)
+* pang.wnt.msa - stockholm alignment file from Pang et al. (2010)
 
 * rename_wnt_seqs.pl - custom script that renames sequences for this analysis (requires [JFR-PerlModules](https://github.com/josephryan/JFR-PerlModules))
