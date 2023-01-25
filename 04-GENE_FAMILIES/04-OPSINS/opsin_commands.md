@@ -1,6 +1,6 @@
 # COMMANDS USED FOR OPSIN ANALYSIS
 
-### Build custom hidden Markov model (HMM)
+## BUILD CUSTOM HIDDEN MARKOV MODE (HMM)
 ```
 hmmbuild opsin.hmm opsin.fa
 hmmbuild -O opsin.adjusted.stockholm opsin.hmm opsin.fa  > hmmbuild.out
@@ -35,15 +35,13 @@ make_subalignment --tree=prelim.treefile --aln=Bo_Hc.opsin.fa --root=Bova1_4.001
 iqtree-omp -s make_subalignment.out -nt AUTO -bb 1000 -m LG -pre prelim2
 ```
 
-### PRUNE SUBALSIGNMENT
+### PRUNE SUBALIGNMENT
 Count gaps
 ```
 count_gaps.pl make_subalignment.out > count_gaps.out
 ```
 
-We removed any seqs with >=184 gaps. We also removed Bova1_4.0001.g9.t1.2 since it had ~50% overlap with Bova1_4.0001.g9.t1.1 and aligned to the 5 prime end of the full sequence, which was the same as Mnemiopsis opsin2 sequence. We also removed Hcv1.av93.c10.g623.i1.2 since there was >50% overlap with Hcv1.av93.c10.g623.i1.1 and the sequence aligned to the position of Mnemiopsis opsin 2. 
-
-We removed Mnemiopsis opsin3 as well because it grouped with non-opsin ctenophore sequences.
+We removed any seqs with >=184 gaps. We also removed Bova1_4.0001.g9.t1.2 since it had ~50% overlap with Bova1_4.0001.g9.t1.1 and aligned to the 5 prime end of the full sequence, which was the same as Mnemiopsis opsin2 sequence. We removed Hcv1.av93.c10.g623.i1.2 since there was >50% overlap with Hcv1.av93.c10.g623.i1.1 and the sequence aligned to the position of Mnemiopsis opsin2. Lastly, we removed Mnemiopsis opsin3 because it grouped with non-opsin ctenophore sequences.
 
 ```
 perl rename_remove_seqs.pl > Bo_Hc.opsin.renames.fa

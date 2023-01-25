@@ -1,6 +1,6 @@
 # COMMANDS USED FOR TGF-BETA RECEPTOR ANALYSIS
 
-### Build custom hidden Markov model (HMM)
+### BUILD CUSTOM HIDDEN MARKOV MODEL (HMM)
 ```
 hmmbuild pang.rec.hmm pang.rec.fa
 hmmbuild -O Pang.TGFBR.adjusted.stockholm Pang.TGFBR.hmm pang.rec.fa > hmmbuild.out
@@ -40,7 +40,7 @@ make_subalignment --tree=prelim.treefile --aln=../04-PRELIMTREE/Bo_Hc_Pang.rec.f
 iqtree-omp -s make_subalignment.out -nt AUTO -bb 1000 -m LG -pre prelim2
 ```
 
-### PRUNE SUBALSIGNMENT
+### PRUNE SUBALIGNMENT
 Count gaps
 ```
 count_gaps.pl make_subalignment.out > count_gaps.out

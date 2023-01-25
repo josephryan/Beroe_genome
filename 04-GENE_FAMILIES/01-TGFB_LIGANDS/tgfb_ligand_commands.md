@@ -1,6 +1,6 @@
 # COMMANDS USED FOR TGF-BETA LIGAND ANALYSIS
 
-### Build custom hidden Markov model (HMM)
+### BUILD CUSTOM HIDDEN MARKOV MODEL (HMM)
 ```
 hmmbuild pang.ligands.hmm pang.ligands.fa
 hmmbuild -O pang.TGFBL.adjusted.stockholm pang.TGFBL.hmm pang.ligands.fa  > hmmbuild.out

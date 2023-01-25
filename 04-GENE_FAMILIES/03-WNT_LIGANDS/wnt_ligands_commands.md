@@ -1,6 +1,6 @@
 # COMMANDS USED FOR WNT LIGAND ANALYSIS
 
-### Build custom hidden Markov model (HMM)
+### BUILD CUSTOM HIDDEN MARKOV MODEL (HMM)
 ```
 hmmbuild pang.wnt.hmm pang.wnt.msa
 hmmbuild -O pang.wnt.adjusted.stockholm pang.wnt.hmm pang.wnt.msa  > hmmbuild.out
