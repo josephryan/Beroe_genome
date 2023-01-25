@@ -1,6 +1,6 @@
 # COMMANDS USED FOR OPSIN ANALYSIS
 
-## BUILD CUSTOM HIDDEN MARKOV MODE (HMM)
+### BUILD CUSTOM HIDDEN MARKOV MODEL (HMM)
 ```
 hmmbuild opsin.hmm opsin.fa
 hmmbuild -O opsin.adjusted.stockholm opsin.hmm opsin.fa  > hmmbuild.out
