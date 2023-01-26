@@ -2,7 +2,7 @@
 
 * expanded_opsin_commands.md - commands to perform phylogenetic analyses
 
-* rename_long_names.pl- custom script to rename long gene names
+* rename_long_names.pl - custom script to rename long gene names
 
 ### The following taxa and protein models were used for this analysis
 * [Capitella teleta](https://metazoa.ensembl.org/Capitella_teleta/Info/Index)

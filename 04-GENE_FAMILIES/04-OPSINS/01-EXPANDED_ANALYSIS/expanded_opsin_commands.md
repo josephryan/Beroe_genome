@@ -12,6 +12,9 @@ cat opsin.adjusted.nodotsallcaps.fa Ct_hmm2aln.out Dm_hmm2aln.out Hs_hmm2aln.out
 ```
 
 ### MAXIMUM-LIKELIHOOD ANALYSIS
+```
+cat opsin.adjusted.nodotsallcaps.fa Ct_hmm2aln.out Dm_hmm2aln.out Hs_hmm2aln.out Hv_hmm2aln.out Ml_hmm2aln.out Nv_hmm2aln.out > opsins_outgroups.fa
+```
 Renamed long gene names for clarity
 ```
 perl rename_long_names.pl opsins_outgroups.fa > opsins_outgroups_renamed.fa
