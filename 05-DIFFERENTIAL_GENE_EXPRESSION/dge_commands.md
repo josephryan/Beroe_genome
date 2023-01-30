@@ -1,7 +1,7 @@
 # COMMANDS USED TO PERFORM DIFFERENTIAL GENE EXPRESSION ANALYSES
 
 ## IDENTIFYING SINGLE COPY ORTHOLOGS
-_B. ovata_ protein models and _M. leidyi_ protein models were used as input for OrthoFinder
+_Beroe ovata_ protein models and _Mnemiopsis leidyi_ protein models were used as input for OrthoFinder
 
 ### OrthoFinder analysis
 ```
@@ -31,7 +31,7 @@ grep '^>' Bova1.4.cds | perl -ne 'chomp; m/^>(.*).(t\d+)/; print "$1\t$1.$2\n";'
 ### Differential gene expression analysis
 ```
 /usr/local/trinityrnaseq-Trinity-v2.8.5/Analysis/DifferentialExpression/run_DE_analysis.pl --matrix Bova1.4.gene.counts.matrix --method voom --samples_file Bo_samples_file2.txt
-perl filter_de.pl ../Bova1.4.gene.counts.matrix.BoCR_vs_BoST.voom.DE_results BOCR_vs_BOST.voom
+perl filter_de.pl Bova1.4.gene.counts.matrix.BoCR_vs_BoST.voom.DE_results BOCR_vs_BOST.voom
 cut -f1 BOCR_vs_BOST.voom.logFC_2.txt > combrows_boids_de.txt
 cut -f1 BOCR_vs_BOST.voom.logFC_-2.txt > statocyst_boids_de.txt
 ```
@@ -52,7 +52,7 @@ cut -f1 BOCR_vs_BOST.voom.logFC_-2.txt > statocyst_boids_de.txt
 ### Differential gene expression analysis
 ```
 /usr/local/trinityrnaseq-Trinity-v2.8.5/Analysis/DifferentialExpression/run_DE_analysis.pl --matrix ML2.2.isoform.counts.matrix --method voom --samples_file Ml_samples_file2.txt
-perl filter_de.pl ../ML2.2.isoform.counts.matrix.MlCR_vs_MlST.voom.DE_results MlCR_vs_MlST.voom
+perl filter_de.pl ML2.2.isoform.counts.matrix.MlCR_vs_MlST.voom.DE_results MlCR_vs_MlST.voom
 cut -f1 MlCR_vs_MlST.voom.logFC_-2.txt > statocyst_mlids_de.txt
 cut -f1 MlCR_vs_MlST.voom.logFC_2.txt > combrows_mlids_de.txt
 ```

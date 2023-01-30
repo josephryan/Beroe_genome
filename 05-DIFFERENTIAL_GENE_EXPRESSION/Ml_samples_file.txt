@@ -1,0 +1,6 @@
+MlCR    MlCR_rep1	C2_S100_L008_R1_001.fastq.gz     C2_S100_L008_R2_001.fastq.gz
+MlCR    MlCR_rep2       C3_S101_L008_R1_001.fastq.gz      C3_S101_L008_R2_001.fastq.gz
+MlCR    MlCR_rep3      C6_S102_L008_R1_001.fastq.gz      C6_S102_L008_R2_001.fastq.gz
+MlST    MlST_rep1       S_S103_L008_R1_001.fastq.gz        S_S103_L008_R2_001.fastq.gz
+MlST    MlST_rep2       S3_S104_L008_R1_001.fastq.gz      S3_S104_L008_R2_001.fastq.gz
+MlST    MlST_rep3       S6_S105_L008_R1_001.fastq.gz      S6_S105_L008_R2_001.fastq.gz

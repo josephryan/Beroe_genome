@@ -1,0 +1,6 @@
+BoCR	BoCR_rep1
+BoCR	BoCR_rep2
+BoCR	BoCR_rep3
+BoST	BoST_rep1
+BoST	BoST_rep2
+BoST	BoST_rep3

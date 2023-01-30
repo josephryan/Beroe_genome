@@ -1,0 +1,6 @@
+BoCR	BoCR_rep1	4-BoC01_S4_L004_R1_001.fastq.gz	4-BoC01_S4_L004_R2_001.fastq.gz
+BoCR	BoCR_rep2	5-BoC02_S5_L004_R1_001.fastq.gz	5-BoC02_S5_L004_R2_001.fastq.gz
+BoCR	BoCR_rep3	6-BoC03_S6_L004_R1_001.fastq.gz	6-BoC03_S6_L004_R2_001.fastq.gz
+BoST	BoST_rep1	1-BoA03_S1_L004_R1_001.fastq.gz	1-BoA03_S1_L004_R2_001.fastq.gz
+BoST	BoST_rep2	2-BoA04_S2_L004_R1_001.fastq.gz	2-BoA04_S2_L004_R2_001.fastq.gz
+BoST	BoST_rep3	3-BoA05_S3_L004_R1_001.fastq.gz	3-BoA05_S3_L004_R2_001.fastq.gz
