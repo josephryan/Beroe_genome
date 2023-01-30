@@ -11,6 +11,19 @@ orthofinder -t 256 -f 03-ORTHOFINDER_RERUN_I8 -I 8 > of_i8.out 2> of_i8.err &
 orthofinder -t 256 -f 04-ORTHOFINDER_RERUN_I10 -I 10 > of_i10.out 2> of_i10.err &
 ```
 
+### Combine single-copy orthologs from all OrthoFinder analysis
+Create symbolic links to the Single_Copy_Orthologue_Sequences for each run
+```
+ln -s /I1.5/OrthoFinder/Results/Single_Copy_Orthologue_Sequences I1.5
+ln -s /I5/OrthoFinder/Results/Single_Copy_Orthologue_Sequences I5
+ln -s /I8/OrthoFinder/Results/Single_Copy_Orthologue_Sequences I8
+ln -s /I10/OrthoFinder/Results/Single_Copy_Orthologue_Sequences I10
+```
+Run print_total-1_to_1s.pl to combine single-copy orthologs
+```
+perl print_total-1_to_1s.pl
+```
+
 ## DIFFERENTIAL GENE EXPRESSION ANALYSIS
 Tissue-specific transcriptomic data found in the European Nucleotide Archive under project number [PRJEB55009](https://www.ebi.ac.uk/ena/browser/view/PRJEB55009)
 
