@@ -77,26 +77,6 @@ sub print_gene_in_gff {
     }
 }
 
-#sub get_positions {
-#    my $ra_genes  = shift;
-#    my $ra_coords = shift;
-#    my $ra_rec    = shift;
-#    my %positions = ();
-#    for (my $i = 0; $i < @{$ra_coords}; $i++) {
-#        my $coord = $ra_coords->[$i];
-#        for (my $j = 0; $j < @{$ra_genes}; $j++) {
-#            if ($coord < $ra_genes->[$j]->[0]->[3]) {
-#                if ($positions{$ra_genes->[$j]->[0]->[3]}) {
-#                    push @{$positions{$ra_genes->[$j]->[0]->[3]}}, $ra_$positions{$j}
-## $i or $j??                $positions{$i} = [ @{$ra_genes->[$j]} ];
-##                next COORD;
-##            }
-#        }
-#        my $last_pos = scalar(@{$ra_genes});
-#    }
-#    return \%positions;
-#}
-
 sub get_start_coords {
     my $ra_rec = shift;
     my @coords = ();
