@@ -21,7 +21,29 @@ ln -s /I10/OrthoFinder/Results/Single_Copy_Orthologue_Sequences I10
 ```
 Run print_total-1_to_1s.pl to combine single-copy orthologs
 ```
-perl print_total-1_to_1s.pl
+perl print_total-1_to_1s.pl > print_total-1_to_1s.out
+```
+
+### Perform maximum-likelihood analyses to identify additional single-copy orthologs
+Create symbolic link to the Orthogroup_Sequences for each run
+```
+ln -s /I1.5/OrthoFinder/Results/Orthogroup_Sequences I1.5.multi
+ln -s /I5/OrthoFinder/Results/Orthogroup_Sequences I5.multi
+ln -s /I8/OrthoFinder/Results/Orthogroup_Sequences I1.8.multi
+ln -s /I10/OrthoFinder/Results/Orthogroup_Sequences I10.multi
+```
+```
+perl ogs_w_4plus_taxa_mafft_iqtree.pl
+```
+
+### Discard conflicting OrthoFinder results
+```
+perl print_isoforms_blocking_one_to_ones.pl > print_isoforms_blocking_one_to_ones.out
+```
+
+### Combine single-copy orthologs from gene trees with those idenfitied in the OrthoFinder runs
+```
+perl get_final_set.pl
 ```
 
 ## DIFFERENTIAL GENE EXPRESSION ANALYSIS
@@ -50,6 +72,7 @@ cut -f1 BOCR_vs_BOST.voom.logFC_-2.txt > statocyst_boids_de.txt
 ```
 
 ### ANALYSIS ON _M. LEIDYI_ TISSUE-SPECIFIC DATA
+Tissue-specific transcriptomic data found in the European Nucleotide Archive under project number [PRJEB28334](https://www.ebi.ac.uk/ena/browser/view/PRJEB28334) and [PRJNA787267](https://www.ebi.ac.uk/ena/browser/view/PRJNA787267)
 
 ### Transcript quantification
 ```
