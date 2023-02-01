@@ -47,9 +47,8 @@ perl get_final_set.pl
 ```
 
 ## DIFFERENTIAL GENE EXPRESSION ANALYSIS
-Tissue-specific transcriptomic data found in the European Nucleotide Archive under project number [PRJEB55009](https://www.ebi.ac.uk/ena/browser/view/PRJEB55009)
-
 ### ANALYSIS ON _B. OVATA_ TISSUE-SPECIFIC DATA
+Tissue-specific transcriptomic data found in the European Nucleotide Archive under project number [PRJEB55009](https://www.ebi.ac.uk/ena/browser/view/PRJEB55009)
 
 ### Transcript quantification
 ```
