@@ -1,9 +1,9 @@
 # Commands, sample files, and custom script for differential gene expression analysis
 
-### Most scripts require [JFR-PerlModules](https://github.com/josephryan/JFR-PerlModules)
-
+### Commands
 * dge_commands.md - commands to perform differential gene expression analysis
 
+### Sample files for analysis
 * Bo_samples_file.txt - sample file for input for transcript quantification of _Beroe ovata_ tissue-specific data
 
 * Bo_samples_file2.txt - sample file for input for quality check and differential gene expression analysis of _Beroe ovata_ tissue-specific data
@@ -12,6 +12,8 @@
 
 * Ml_samples_file2.txt - sample file for input for quality check and differential gene expression analysis of _Mnemiopsis leidyi_ tissue-specific data
 
+### Custom scrtipts
+#### Most scripts require [JFR-PerlModules](https://github.com/josephryan/JFR-PerlModules)
 * print_total-1_to_1s.pl - custom script that combines single-copy orthologs identified in OrthoFinder
 
 * ogs_w_4plus_taxa_mafft_iqtree.pl - custom script that performs maximum-likelihood analyses on orthogroups with 4 or more genes
@@ -22,4 +24,5 @@
 
 * filter_de.pl - custom script that identifies genes expressed significantly higher in one tissue compared to another
 
+### Single-copy orthologs identified
 * get_final_set.out - list of single copy orthologs in _Beroe ovata_ and _Mnemiopsis leidyi_ 
