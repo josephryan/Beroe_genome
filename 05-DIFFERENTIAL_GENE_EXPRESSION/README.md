@@ -20,4 +20,6 @@
 
 * get_final_set.pl - custom script that combines single-orthologs identified from several analyses
 
-* filter_de.pl - custom script that identifies genes expressed significantly higher in one tissue compared to another 
+* filter_de.pl - custom script that identifies genes expressed significantly higher in one tissue compared to another
+
+* get_final_set.out - list of single copy orthologs in _Beroe ovata_ and _Mnemiopsis leidyi_ 
