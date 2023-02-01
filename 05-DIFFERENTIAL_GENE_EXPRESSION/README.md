@@ -1,8 +1,8 @@
 # Commands, sample files, and custom script for differential gene expression analysis
 
-* dge_commands.md - commands to perform differential gene expression analysis
+### Most scripts require [JFR-PerlModules](https://github.com/josephryan/JFR-PerlModules)
 
-#### Most scripts require [JFR-PerlModules](https://github.com/josephryan/JFR-PerlModules)
+* dge_commands.md - commands to perform differential gene expression analysis
 
 * Bo_samples_file.txt - sample file for input for transcript quantification of _Beroe ovata_ tissue-specific data
 
