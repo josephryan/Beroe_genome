@@ -2,6 +2,8 @@
 
 * commands.md - commands used to assemble Beroe genome
 
+* repeat_commands.md - commands used to perform analysis of repetitive content in the assembly
+
 * break_big_gaps.pl - script used to remove large gaps from scaffolded assembly (requires [JFR-PerlModules](https://github.com/josephryan/JFR-PerlModules))
 
 * remove_lt200.pl - script used to remove contigs shorter than 200 nucleotides (requires [JFR-PerlModules](https://github.com/josephryan/JFR-PerlModules))
