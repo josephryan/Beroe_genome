@@ -2,6 +2,8 @@
 
 * expanded_opsin_commands.md - commands to perform phylogenetic analyses
 
+* opsins_outgroups.fa - alignment file produced for the analysis
+
 * rename_long_names.pl - custom script to rename long gene names
 
 ### The following taxa and protein models were used for this analysis
