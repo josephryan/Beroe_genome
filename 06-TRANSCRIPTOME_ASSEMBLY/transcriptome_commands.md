@@ -1,5 +1,7 @@
 # COMMANDS USED TO ASSEMBLE BEROE TRANSCRIPTOME AT 20 HOURS POST-FERTILIZATION
 
+Raw reads for 20 hours post-fertilization can be found in the European Nucleotide Archive under accession numbers [ERR2205104](https://www.ebi.ac.uk/ena/browser/view/ERR2205104) and [ERR2205105](https://www.ebi.ac.uk/ena/browser/view/ERR2205105)
+
 ### Trim adapters with [biolite](https://bitbucket.org/caseywdunn/biolite/src/master/) (no longer supported)
 
 ```
