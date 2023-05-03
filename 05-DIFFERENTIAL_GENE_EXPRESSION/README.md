@@ -1,4 +1,4 @@
-# Commands, sample files, and custom script for differential gene expression analysis
+# Commands, sample files, and custom scripts for differential gene expression analysis
 
 ### Commands
 * dge_commands.md - commands to perform differential gene expression analysis
