@@ -10,7 +10,7 @@ perl ../remove_dots_tildes_and_lc.pl Pang.TGFBR.adjusted.fa  > Pang.rec.adjusted
 
 ### ALIGN BEROE OVATA PROTEIN SEQUENCES TO HMM
 ```
-hmm2aln.pl --hmm=pang.rec.hmm --name=Bo_receptors --fasta=Bova1.4.aa --threads=40 > Bo_hmm2aln.out 2> Bo_hmm2aln.err
+hmm2aln.pl --hmm=pang.rec.hmm --name=Bo_receptors --fasta=Bova1.5.aa --threads=40 > Bo_hmm2aln.out 2> Bo_hmm2aln.err
 ```
 
 ### ALIGN HORMIPHORA CALIFORNENSIS PROTEIN SEQUENCES TO HMM
