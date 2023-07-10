@@ -9,11 +9,15 @@ perl ../remove_dots_tildes_and_lc.pl Pang.TGFBR.adjusted.fa  > Pang.rec.adjusted
 ```
 
 ### ALIGN BEROE OVATA PROTEIN SEQUENCES TO HMM
+### download Bova1.5.aa from http://ryanlab.whitney.ufl.edu/bovadb/
+
 ```
 hmm2aln.pl --hmm=pang.rec.hmm --name=Bo_receptors --fasta=Bova1.5.aa --threads=40 > Bo_hmm2aln.out 2> Bo_hmm2aln.err
 ```
 
 ### ALIGN HORMIPHORA CALIFORNENSIS PROTEIN SEQUENCES TO HMM
+### download Hcv1av93_model_proteins.pep from https://zenodo.org/record/4074309
+
 ```
 hmm2aln.pl --hmm=pang.rec.hmm --name=Hc_receptors --fasta=Hcv1av93_model_proteins.pep --threads=40 > Hc_hmm2aln.out 2> Hc_hmm2aln.err
 ```
