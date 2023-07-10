@@ -8,11 +8,13 @@ esl-reformat -o pang.TGFBL.adjusted.fa afa pang.TGFBL.adjusted.stockholm > esl-r
 perl ../remove_dots_tildes_and_lc.pl pang.TGFBL.adjusted.fa > pang.ligands.adjusted.nodotsallcaps.fa
 ```
 ### ALIGN BEROE OVATA PROTEIN SEQUENCES TO HMM
+#### download Bova1.5.aa from http://ryanlab.whitney.ufl.edu/bovadb/
 ```
 hmm2aln.pl --hmm=pang.ligands.hmm --name=Bo_ligands --fasta=Bova1.5.aa --threads=40 > Bo_hmm2aln.out 2> Bo_hmm2aln.err
 ```
 
 ### ALIGN HORMIPHORA CALIFORNENSIS PROTEIN SEQUENCES TO HMM
+#### download Hcv1av93_model_proteins.pep from https://zenodo.org/record/4074309
 ```
 hmm2aln.pl --hmm=pang.ligands.hmm --name=Hc_ligands --fasta=Hcv1av93_model_proteins.pep --threads=40 > Hc_hmm2aln.out 2> Hc_hmm2aln.er
 ```
