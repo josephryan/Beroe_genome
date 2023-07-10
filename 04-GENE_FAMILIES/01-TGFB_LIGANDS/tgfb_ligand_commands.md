@@ -9,12 +9,12 @@ perl ../remove_dots_tildes_and_lc.pl pang.TGFBL.adjusted.fa > pang.ligands.adjus
 ```
 ### ALIGN BEROE OVATA PROTEIN SEQUENCES TO HMM
 ```
-hmm2aln.pl --hmm=pang.ligands.hmm --name=Bo_ligands --fasta=/bwdata1/ahernandez6/12-BEROE_GENOME/04-ORTHO_RERUN/04-FINALIZE_NAMES/Bova1.4.aa --threads=40 > Bo_hmm2aln.out 2> Bo_hmm2aln.err
+hmm2aln.pl --hmm=pang.ligands.hmm --name=Bo_ligands --fasta=Bova1.5.aa --threads=40 > Bo_hmm2aln.out 2> Bo_hmm2aln.err
 ```
 
 ### ALIGN HORMIPHORA CALIFORNENSIS PROTEIN SEQUENCES TO HMM
 ```
-hmm2aln.pl --hmm=pang.ligands.hmm --name=Hc_ligands --fasta=/bwdata2/jfryan/00-DATA/Hcv1av93_model_proteins.pep --threads=40 > Hc_hmm2aln.out 2> Hc_hmm2aln.er
+hmm2aln.pl --hmm=pang.ligands.hmm --name=Hc_ligands --fasta=Hcv1av93_model_proteins.pep --threads=40 > Hc_hmm2aln.out 2> Hc_hmm2aln.er
 ```
 
 ### PRELIMINARY PHYLOGENETIC ANALYSIS
