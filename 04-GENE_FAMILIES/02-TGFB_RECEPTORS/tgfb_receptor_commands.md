@@ -1,16 +1,11 @@
 # COMMANDS USED FOR TGF-BETA RECEPTOR ANALYSIS
 
-### BUILD CUSTOM HIDDEN MARKOV MODEL (HMM)
+### BUILD CUSTOM HIDDEN MARKOV MODEL (HMM) AND ALIGNMENT FILE THAT CORRESPONDS W HMM
 ```
 hmmbuild pang.rec.hmm pang.rec.fa
 hmmbuild -O Pang.TGFBR.adjusted.stockholm Pang.TGFBR.hmm pang.rec.fa > hmmbuild.out
 esl-reformat -o Pang.TGFBR.adjusted.fa afa Pang.TGFBR.adjusted.stockholm > esl-reformat.out 2> esl-reformat.err
-perl remove_dots_and_lc.pl Pang.TGFBR.adjusted.fa  > Pang.rec.adjusted.nodotsallcaps.fa
-```
-
-Fixes tildes at the beginning of sequences
-```
-perl -pi.orig -e 's/^\~+/----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/' Pang.rec.adjusted.nodotsallcaps.fa
+perl ../remove_dots_tildes_and_lc.pl Pang.TGFBR.adjusted.fa  > Pang.rec.adjusted.nodotsallcaps.fa
 ```
 
 ### ALIGN BEROE OVATA PROTEIN SEQUENCES TO HMM
