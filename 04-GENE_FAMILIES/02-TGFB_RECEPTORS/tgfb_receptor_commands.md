@@ -1,6 +1,7 @@
 # COMMANDS USED FOR TGF-BETA RECEPTOR ANALYSIS
 
 ### BUILD CUSTOM HIDDEN MARKOV MODEL (HMM) AND ALIGNMENT FILE THAT CORRESPONDS W HMM
+#### requires HMMer (http://hmmer.org/)
 ```
 hmmbuild pang.rec.hmm pang.rec.fa
 hmmbuild -O Pang.TGFBR.adjusted.stockholm Pang.TGFBR.hmm pang.rec.fa > hmmbuild.out
@@ -10,6 +11,7 @@ perl ../remove_dots_tildes_and_lc.pl Pang.TGFBR.adjusted.fa  > Pang.rec.adjusted
 
 ### ALIGN BEROE OVATA PROTEIN SEQUENCES TO HMM
 #### download Bova1.5.aa from http://ryanlab.whitney.ufl.edu/bovadb/
+#### requires https://github.com/josephryan/hmm2aln.pl
 
 ```
 hmm2aln.pl --hmm=pang.rec.hmm --name=Bo_receptors --fasta=Bova1.5.aa --threads=40 > Bo_hmm2aln.out 2> Bo_hmm2aln.err
@@ -29,6 +31,7 @@ iqtree-omp -s Bo_Hc_Pang.rec.fa -nt AUTO -bb 1000 -m LG -pre prelim
 ```
 
 ### MAKE SUBALIGNMENT
+#### requires https://github.com/josephryan/make_subalignment
 Pruning of clades that did not include sequences from the starting published alignment (pang.rec.fa)
 ```
 make_subalignment --tree=prelim.treefile --aln=../04-PRELIMTREE/Bo_Hc_Pang.rec.fa --root=Bova1_4.0330.g15.t1.1 --pre=Hsa_ > make_subalignment.out 2> make_subalignment.err
