@@ -1,11 +1,11 @@
 # COMMANDS USED FOR TGF-BETA LIGAND ANALYSIS
 
-### BUILD CUSTOM HIDDEN MARKOV MODEL (HMM)
+### BUILD CUSTOM HIDDEN MARKOV MODEL (HMM) AND ALIGNMENT FILE THAT CORRESPONDS W HMM
 ```
 hmmbuild pang.ligands.hmm pang.ligands.fa
 hmmbuild -O pang.TGFBL.adjusted.stockholm pang.TGFBL.hmm pang.ligands.fa  > hmmbuild.out
 esl-reformat -o pang.TGFBL.adjusted.fa afa pang.TGFBL.adjusted.stockholm > esl-reformat.out 2> esl-reformat.err
-perl remove_dots_tildes_and_lc.pl pang.TGFBL.adjusted.fa > pang.ligands.adjusted.nodotsallcaps.fa
+perl ../remove_dots_tildes_and_lc.pl pang.TGFBL.adjusted.fa > pang.ligands.adjusted.nodotsallcaps.fa
 ```
 ### ALIGN BEROE OVATA PROTEIN SEQUENCES TO HMM
 ```
