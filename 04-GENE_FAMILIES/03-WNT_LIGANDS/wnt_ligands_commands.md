@@ -5,14 +5,20 @@
 hmmbuild pang.wnt.hmm pang.wnt.msa
 hmmbuild -O pang.wnt.adjusted.stockholm pang.wnt.hmm pang.wnt.msa  > hmmbuild.out
 esl-reformat -o pang.wnt.adjusted.fa afa pang.wnt.adjusted.stockholm > esl-reformat.out 2> esl-reformat.err
+perl remove_dots_tildes_and_lc.pl pang.wnt.adjusted.fa > pang.wnt.adjusted.nodotsallcaps.fa
 ```
 
 ### ALIGN BEROE OVATA PROTEIN SEQUENCES TO HMM
+#### download Bova1.5.aa from http://ryanlab.whitney.ufl.edu/bovadb/
+#### requires https://github.com/josephryan/hmm2aln.pl
+
 ```
-hmm2aln.pl --hmm=pang.wnt.hmm --name=Bo_wnt --fasta=Bova1.4.aa --threads=40 > Bo_hmm2aln.out 2> Bo_hmm2aln.err
+hmm2aln.pl --hmm=pang.wnt.hmm --name=Bo_wnt --fasta=Bova1.5.aa --threads=40 > Bo_hmm2aln.out 2> Bo_hmm2aln.err
 ```
 
 ### ALIGN HORMIPHORA CALIFORNENSIS PROTEIN SEQUENCES TO HMM
+#### download Hcv1av93_model_proteins.pep from https://zenodo.org/record/4074309
+
 ```
 hmm2aln.pl --hmm=pang.wnt.hmm --name=Hc_wnt --fasta=Hcv1av93_model_proteins.pep --threads=40 > Hc_hmm2aln.out 2> Hc_hmm2aln.err
 ```

@@ -5,15 +5,20 @@
 hmmbuild opsin.hmm opsin.fa
 hmmbuild -O opsin.adjusted.stockholm opsin.hmm opsin.fa  > hmmbuild.out
 esl-reformat -o opsin.adjusted.fa afa opsin.adjusted.stockholm > esl-reformat.out 2> esl-reformat.err
-perl remove_dots_tildes_and_lc.pl opsin.adjusted.fa > opsin.adjusted.nodotsallcaps.fa
+perl ../remove_dots_tildes_and_lc.pl opsin.adjusted.fa > opsin.adjusted.nodotsallcaps.fa
 ```
 
 ### ALIGN BEROE OVATA PROTEIN SEQUENCES TO HMM
+#### download Bova1.5.aa from http://ryanlab.whitney.ufl.edu/bovadb/
+#### requires https://github.com/josephryan/hmm2aln.pl
+
 ```
-hmm2aln.pl --hmm=opsin.hmm --name=Bo_opsin --fasta=Bova1.4.aa --threads=40 > Bo_hmm2aln.out 2> Bo_hmm2aln.err
+hmm2aln.pl --hmm=opsin.hmm --name=Bo_opsin --fasta=Bova1.5.aa --threads=40 > Bo_hmm2aln.out 2> Bo_hmm2aln.err
 ```
 
 ### ALIGN HORMIPHORA CALIFORNENSIS PROTEIN SEQUENCES TO HMM
+#### download Hcv1av93_model_proteins.pep from https://zenodo.org/record/4074309
+
 ```
 hmm2aln.pl --hmm=opsin.hmm --name=Hc_opsin --fasta=Hcv1av93_model_proteins.pep --threads=40 > Hc_hmm2aln.out 2> Hc_hmm2aln.err
 ```
@@ -41,10 +46,10 @@ Count gaps
 count_gaps.pl make_subalignment.out > count_gaps.out
 ```
 
-We removed any seqs with >=184 gaps. We also removed Bova1_4.0001.g9.t1.2 since it had ~50% overlap with Bova1_4.0001.g9.t1.1 and aligned to the 5 prime end of the full sequence, which was the same as Mnemiopsis opsin2 sequence. We removed Hcv1.av93.c10.g623.i1.2 since there was >50% overlap with Hcv1.av93.c10.g623.i1.1 and the sequence aligned to the position of Mnemiopsis opsin2. Lastly, we removed Mnemiopsis opsin3 because it grouped with non-opsin ctenophore sequences.
+We removed any seqs with >=184 gaps. We also removed Bova1_5.0001.g9.t1.2 since it had ~50% overlap with Bova1_5.0001.g9.t1.1 and aligned to the 5 prime end of the full sequence, which was the same as Mnemiopsis opsin2 sequence. We removed Hcv1.av93.c10.g623.i1.2 since there was >50% overlap with Hcv1.av93.c10.g623.i1.1 and the sequence aligned to the position of Mnemiopsis opsin2. Lastly, we removed Mnemiopsis opsin3 because it grouped with non-opsin ctenophore sequences.
 
 ```
-perl rename_remove_seqs.pl > Bo_Hc.opsin.renames.fa
+perl rename_remove_opsin_seqs.pl > Bo_Hc.opsin.renames.fa
 ``` 
 
 ### MAXIMUM-LIKELIHOOD ANALYSES
