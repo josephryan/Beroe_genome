@@ -5,35 +5,37 @@ _Beroe ovata_ protein models and _Mnemiopsis leidyi_ protein models were used as
 
 ### OrthoFinder analysis
 ```
-orthofinder -t 18 -f 01-ORTHOFINDER_I1.5 > of.out 2> of.err &
-orthofinder -t 256 -f 02-ORTHOFINDER_RERUN_I5 -I 5 > of2.out 2> of2.err &
-orthofinder -t 256 -f 03-ORTHOFINDER_RERUN_I8 -I 8 > of_i8.out 2> of_i8.err &
-orthofinder -t 256 -f 04-ORTHOFINDER_RERUN_I10 -I 10 > of_i10.out 2> of_i10.err &
+orthofinder -t 61 -f 01-ORTHOFINDER_I1.5 > of.out 2> of.err &
+orthofinder -t 61 -f 02-ORTHOFINDER_RERUN_I5 -I 5 > of2.out 2> of2.err &
+orthofinder -t 61 -f 03-ORTHOFINDER_RERUN_I8 -I 8 > of_i8.out 2> of_i8.err &
+orthofinder -t 61 -f 04-ORTHOFINDER_RERUN_I10 -I 10 > of_i10.out 2> of_i10.err &
 ```
 
 ### Combine single-copy orthologs from all OrthoFinder analysis
-Create symbolic links to the Single_Copy_Orthologue_Sequences for each run
+Create symbolic links to the Single_Copy_Orthologue_Sequences and Orthogroup_Sequences for each run
 ```
 ln -s /I1.5/OrthoFinder/Results/Single_Copy_Orthologue_Sequences I1.5
 ln -s /I5/OrthoFinder/Results/Single_Copy_Orthologue_Sequences I5
 ln -s /I8/OrthoFinder/Results/Single_Copy_Orthologue_Sequences I8
 ln -s /I10/OrthoFinder/Results/Single_Copy_Orthologue_Sequences I10
+ln -s /I1.5/OrthoFinder/Results/Orthogroup_Sequences I1.5.multi
+ln -s /I5/OrthoFinder/Results/Orthogroup_Sequences I5.multi
+ln -s /I8/OrthoFinder/Results/Orthogroup_Sequences I1.8.multi
+ln -s /I10/OrthoFinder/Results/Orthogroup_Sequences I10.multi
 ```
+
 Run print_total-1_to_1s.pl to combine single-copy orthologs
 ```
 perl print_total-1_to_1s.pl > print_total-1_to_1s.out
 ```
 
 ### Perform maximum-likelihood analyses to identify additional single-copy orthologs
-Create symbolic link to the Orthogroup_Sequences for each run
 ```
-ln -s /I1.5/OrthoFinder/Results/Orthogroup_Sequences I1.5.multi
-ln -s /I5/OrthoFinder/Results/Orthogroup_Sequences I5.multi
-ln -s /I8/OrthoFinder/Results/Orthogroup_Sequences I1.8.multi
-ln -s /I10/OrthoFinder/Results/Orthogroup_Sequences I10.multi
-```
-```
+mkdir I1.5.renamed
 perl ogs_w_4plus_taxa_mafft_iqtree.pl
+ls -1 I1.5.renamed/*.treefile | perl -ne 'chomp; print "./ete_orthos.py -i $_\n";' | sh >> ete_orthos.I1.5.out
+grep -c '^>' I1.5.renamed/*.mafft  | grep ':3$' | perl -ne 'chomp; m/(.*):3/; print "$1|";' > tmp.I1.5.egrep
+sh tmp.I1.5.egrep  > I1.5.pairs.txt
 ```
 
 ### Discard conflicting OrthoFinder results
@@ -52,20 +54,20 @@ Tissue-specific transcriptomic data found in the European Nucleotide Archive und
 
 ### Transcript quantification
 ```
-grep '^>' Bova1.4.cds | perl -ne 'chomp; m/^>(.*).(t\d+)/; print "$1\t$1.$2\n";' > Bo_gene_map.out
-/usr/local/trinityrnaseq-v2.12.0/util/align_and_estimate_abundance.pl --transcripts Bova1.4.cds --gene_trans_map Bo_gene_map.out --prep_reference --samples_file Bo_samples_file.txt --est_method RSEM --seqType fq --output_dir aea_Bo2 --aln_method bowtie2 --thread_count 40 > aea_Bo2.out 2> aea_Bo2.err
+grep '^>' Bova1.5.cds | perl -ne 'chomp; m/^>(.*).(t\d+)/; print "$1\t$1.$2\n";' > Bo_gene_map.out
+/usr/local/trinityrnaseq-v2.12.0/util/align_and_estimate_abundance.pl --transcripts Bova1.5.cds --gene_trans_map Bo_gene_map.out --prep_reference --samples_file Bo_samples_file.txt --est_method RSEM --seqType fq --output_dir aea_Bo2 --aln_method bowtie2 --thread_count 40 > aea_Bo2.out 2> aea_Bo2.err
 ```
 
 ### Quality check samples and replicates
 ```
-/usr/local/trinityrnaseq-Trinity-v2.8.5/util/abundance_estimates_to_matrix.pl --est_method RSEM --gene_trans_map Bo_gene_map.out --out_prefix Bova1.4 --name_sample_by_basedir BoCR_rep1/RSEM.genes.results BoCR_rep2/RSEM.genes.results BoCR_rep3/RSEM.genes.results BoST_rep1/RSEM.genes.results BoST_rep2/RSEM.genes.results BoST_rep3/RSEM.genes.results
-/usr/local/trinityrnaseq-Trinity-v2.8.5/Analysis/DifferentialExpression/PtR --matrix Bova1.4.isoform.counts.matrix --samples Bo_samples_file2.txt --log2 --CPM --min_rowSums 10 --compare_replicates --center_rows --prin_comp 3
+/usr/local/trinityrnaseq-Trinity-v2.8.5/util/abundance_estimates_to_matrix.pl --est_method RSEM --gene_trans_map Bo_gene_map.out --out_prefix Bova1.5 --name_sample_by_basedir BoCR_rep1/RSEM.genes.results BoCR_rep2/RSEM.genes.results BoCR_rep3/RSEM.genes.results BoST_rep1/RSEM.genes.results BoST_rep2/RSEM.genes.results BoST_rep3/RSEM.genes.results
+/usr/local/trinityrnaseq-Trinity-v2.8.5/Analysis/DifferentialExpression/PtR --matrix Bova1.5.isoform.counts.matrix --samples Bo_samples_file2.txt --log2 --CPM --min_rowSums 10 --compare_replicates --center_rows --prin_comp 3
 ```
 
 ### Differential gene expression analysis
 ```
-/usr/local/trinityrnaseq-Trinity-v2.8.5/Analysis/DifferentialExpression/run_DE_analysis.pl --matrix Bova1.4.gene.counts.matrix --method voom --samples_file Bo_samples_file2.txt
-perl filter_de.pl Bova1.4.gene.counts.matrix.BoCR_vs_BoST.voom.DE_results BOCR_vs_BOST.voom
+/usr/local/trinityrnaseq-Trinity-v2.8.5/Analysis/DifferentialExpression/run_DE_analysis.pl --matrix Bova1.5.gene.counts.matrix --method voom --samples_file Bo_samples_file2.txt
+perl filter_de.pl Bova1.5.gene.counts.matrix.BoCR_vs_BoST.voom.DE_results BOCR_vs_BOST.voom
 cut -f1 BOCR_vs_BOST.voom.logFC_2.txt > combrows_boids_de.txt
 cut -f1 BOCR_vs_BOST.voom.logFC_-2.txt > statocyst_boids_de.txt
 ```
