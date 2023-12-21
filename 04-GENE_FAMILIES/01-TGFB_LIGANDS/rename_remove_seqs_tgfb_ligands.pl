@@ -5,13 +5,13 @@ use warnings;
 use JFR::Fasta;
 
 our $FILE = 'Bo_Hc_Pang.ligands.fa';
-our %REMOVE = ('Bova1_5.0129.g9.t2' => 1,
-               'Bova1_5.0137.g23.t2' => 1,
-               'Bova1_5.0040.g35.t3' => 1,
-               'Bova1_5.0002.g73.t2' => 1,
-               'Bova1_5.0050.g20.t2' => 1,
+our %REMOVE = ('Bova1_5.0040.g35.t3' => 1,
                'Hcv1.av93.c12.g329.i2' => 1,
-               'Hcv1.av93.c1.g1584.i2' => 1);
+               'Hcv1.av93.c1.g1584.i2' => 1,
+               'Bova1_5.0137.g23.t2' => 1,
+               'Bova1_5.0050.g20.t2' => 1,
+               'Bova1_5.0129.g9.t2' => 1,
+               'Bova1_5.0002.g73.t2' => 1);
 our %RENAME = ('Bova1_5.0040.g35.t2' => 'Bo_Bmp58',
                'Hcv1.av93.c12.g329.i1' => 'Hc_Bmp58',
                'Bova1_5.0137.g23.t1' => 'Bo_Tgf2',
