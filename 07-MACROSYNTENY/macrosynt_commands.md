@@ -11,7 +11,7 @@ Keep only transcript coordinates from _H. californensis_ GFF file (transcript co
 cat Hcv1av93.gff | grep 'transcript' > Hcv1av93.gene.gff
 ```
 
-Edit _H. californensis_ gene names to match Bova_Hcal.tab (which was produced from rbhXpress) using VIM
+Edit _H. californensis_ gene names to match those in Bova_Hcal.tab (which was produced from rbhXpress) 
 ```
 vi Hcv1av93.gene.gff
 :%s/ID=//g
@@ -19,16 +19,17 @@ vi Hcv1av93.gene.gff
 :w Hcv1av93.gene.gff2
 ```
 
-Keep only BED format columns from _H. californensis_ GFF
+Modify _H. californensis_ GFF to BED format
 ```
 cat Hcv1av93.gene.gff2 | cut -f1,4,5,9 > Hcv1av93.gene.bed
 ```
 
-Copy _B. ovata_ GFF file and edit copy to retain gene coordinates using VIM
+Copy _B. ovata_ GFF file and edit file
 ```
 cp Bova1.5.gff Bova1.5.gff.gene_id_edited
 vi Bova1.5.gff.gene_id_edited
 :%s/gene_id=/g_id=//g
+:ZZ
 ```
 
 Keep only gene coordinates from _B. ovata_ GFF file (isoform data is included)
@@ -36,7 +37,7 @@ Keep only gene coordinates from _B. ovata_ GFF file (isoform data is included)
 cat Bova1.5.gff.gene_id_edited | grep gene > Bova1.5.gene.gff
 ```
 
-Keep only BED format columns from _B. ovata_ GFF
+Modify _B. ovata_ GFF to BED format
 ```
 cat Bova1.5.gene.gff | cut -f1,4,5,9 > Bova1.5.gene.bed
 ```
