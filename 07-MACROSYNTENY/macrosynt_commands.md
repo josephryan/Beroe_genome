@@ -29,7 +29,7 @@ Copy _B. ovata_ GFF file and edit file
 cp Bova1.5.gff Bova1.5.gff.gene_id_edited
 vi Bova1.5.gff.gene_id_edited
 :%s/gene_id=/g_id=//g
-:ZZ
+ZZ
 ```
 
 Keep only gene coordinates from _B. ovata_ GFF file (isoform data is included)
