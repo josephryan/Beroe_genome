@@ -4,4 +4,6 @@ my_orthologs_table<-load_orthologs(orthologs_table = "Bova_Hcal.tab", sp1_bed = 
 macrosynteny_df <- compute_macrosynteny(my_orthologs_table)
 plot_oxford_grid(my_orthologs_table,
                  sp1_label = "B.ovata",
-                 sp2_label = "H.californensis")
+                 sp2_label = "H.californensis",
+		 reorder = TRUE,
+		 color_by = "clust")
