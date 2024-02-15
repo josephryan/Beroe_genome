@@ -11,11 +11,14 @@
 ### Commands to perform analysis
 
 * miniprot analysis
-```
+
+```bash
 miniprot Bova1.5.fa chitinase.faa -t 24 --aln -I > chitinase_bova.paf
 get_seq_from_fasta.pl Bova1.5.fa Bova1_5.1697 > Bova1_5.1697.fa
 ```
 
 * perl regular expression search for chitinase catalytic site in translated genome
-* fdgxdxdxe_in_genome.pl Bova1.5.fa
-  
+
+```bash
+fdgxdxdxe_in_genome.pl Bova1.5.fa
+```  
