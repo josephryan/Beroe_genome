@@ -14,6 +14,7 @@
 
 ```bash
 miniprot Bova1.5.fa chitinase.faa -t 24 --aln -I > chitinase_bova.paf
+
 get_seq_from_fasta.pl Bova1.5.fa Bova1_5.1697 > Bova1_5.1697.fa
 ```
 
