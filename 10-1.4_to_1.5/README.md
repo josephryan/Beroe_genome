@@ -1,3 +1,5 @@
+#Comannds run to reannotate the genome and correct the naming convention of isoforms
+
 ```bash
 gzip -dc Bova1.4.*
 
