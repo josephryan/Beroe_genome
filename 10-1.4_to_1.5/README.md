@@ -1,6 +1,6 @@
 # Comannds run to correct the naming convention of isoforms
 
-```bash
+```
 gzip -dc Bova1.4.*
 
 makeblastdb -dbtype prot -in Bova1.4.aa
