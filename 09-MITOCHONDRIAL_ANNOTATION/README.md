@@ -1,6 +1,6 @@
 # Command to annotate _Beroe ovata_ mitochondrial genome
 
-### down _B. ovata_ mithcondrial genome assembly from http://ryanlab.whitney.ufl.edu/bovadb/
+Download _B. ovata_ mithcondrial genome assembly from http://ryanlab.whitney.ufl.edu/bovadb/
 
 ### Annotation in MITOS
 ```
