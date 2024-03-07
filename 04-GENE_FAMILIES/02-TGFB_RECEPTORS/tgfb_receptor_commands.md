@@ -34,7 +34,7 @@ iqtree-omp -s Bo_Hc_Pang.rec.fa -nt AUTO -bb 1000 -m LG -pre prelim
 #### requires https://github.com/josephryan/make_subalignment
 Pruning of clades that did not include sequences from the starting published alignment (pang.rec.fa)
 ```
-make_subalignment --tree=prelim.treefile --aln=../04-PRELIMTREE/Bo_Hc_Pang.rec.fa --root=Bova1_4.0330.g15.t1.1 --pre=Hsa_ > make_subalignment.out 2> make_subalignment.err
+make_subalignment --tree=prelim.treefile --aln=../04-PRELIMTREE/Bo_Hc_Pang.rec.fa --root=Bova1_5.0330.g15.t1.1 --pre=Hsa_ > make_subalignment.out 2> make_subalignment.err
 ```
 
 ### SECOND PRELIMINARY ANALYSIS
@@ -48,7 +48,7 @@ Count gaps
 count_gaps.pl make_subalignment.out > count_gaps.out
 ```
 
-We removed any sequence with >= 281 (61%) gaps, as well as Bova1_4.0164.g10.t1 and Hcv1.av93.c4.g664.i1 since both produced long branches with unstable phylogenetic positions. 
+We removed any sequence with >= 281 (61%) gaps, as well as Bova1_5.0164.g10.t1 and Hcv1.av93.c4.g664.i1 since both produced long branches with unstable phylogenetic positions. 
 
 ```
 perl rename_remove_seqs.pl > Bo_Hc_Pang.rec.renames.fa

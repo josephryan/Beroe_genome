@@ -9,15 +9,15 @@ our @FILES = qw(I1.5.pairs.txt print_isoforms_blocking_one_to_ones.out print_tot
 
 # The following were added based on detailed phylogenetic analyses
 # Detailed analyses confirmed 8 other 1-to-1 orthologs
-our %LANA_ADDITIONS = ('Bova1_4.0020.g50.t1' => 'ML08593b',
-                       'Bova1_4.0045.g60.t1' => 'ML368915a');
+our %LANA_ADDITIONS = ('Bova1_5.0020.g50.t1' => 'ML08593b',
+                       'Bova1_5.0045.g60.t1' => 'ML368915a');
 
 our $ML_NT = '/bwdata2/jfryan/00-DATA/ML2.2.nt';
-our $BO_NT = '/bwdata2/jfryan/00-DATA/Bova1.4.cds';
+our $BO_NT = '/bwdata3/jfryan/02-BEROE.POSTMINION/06-HIDDEN_ISOFORMS/Bova1.5.cds';
 
 our $OUTFILE = 'get_final_set.out';
-our $OUT_BOCDS = 'Bo_5488.cds';
-our $OUT_MLCDS = 'Ml_5488.cds';
+our $OUT_BOCDS = 'Bo_5481.cds';
+our $OUT_MLCDS = 'Ml_5481.cds';
 
 MAIN: {
     my ($rh_b2m,$rh_conflict) = get_b2m();

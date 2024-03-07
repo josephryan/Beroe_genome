@@ -32,7 +32,7 @@ iqtree-omp -s Bo_Hc.opsin.fa -nt AUTO -bb 1000 -m LG -pre prelim
 ### MAKE SUBALIGNMENT
 Pruning of clades that did not include sequences from the starting published alignment (opsins.fa)
 ```
-make_subalignment --tree=prelim.treefile --aln=Bo_Hc.opsin.fa --root=Bova1_4.0015.g57.t1 --pre=Nematostella_ > make_subalignment.out 2> make_subalignment.err
+make_subalignment --tree=prelim.treefile --aln=Bo_Hc.opsin.fa --root=Bova1_5.0015.g57.t1 --pre=Nematostella_ > make_subalignment.out 2> make_subalignment.err
 ```
 
 ### SECOND PRELIMINARY ANALYSIS

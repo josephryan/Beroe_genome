@@ -4,28 +4,28 @@ use strict;
 use warnings;
 use Data::Dumper;
 
-our $BO_ML_5488 = '/bwdata1/jfryan/07-BEROE/80-RERUN_MDEBIASSE/19-BO_ML_DGE/get_final_set.out';
-our $ML_DGE = '/bwdata3/lanadykes/01-BEROE/08-DGE/./05-ALL_ML/01-voom/ML2.2.isoform.counts.matrix.MlCR_vs_MlST.voom.DE_results';
-our $BO_DGE = '/bwdata3/lanadykes/01-BEROE/08-DGE/./04-ALL_BO/02-gene.voom/Bova1.4.gene.counts.matrix.BoCR_vs_BoST.voom.DE_results';
+our $BO_ML_6348 = './get_final_set.out';
+our $ML_DGE = './ML2.2.isoform.counts.matrix.MlCR_vs_MlST.voom.DE_results';
+our $BO_DGE = './voom.18758.dir/Bova1.5.isoform.counts.matrix.BoCR_vs_BoST.voom.DE_results';
 
 
 MAIN: {
-    my $rh_5488 = get_5488($BO_ML_5488);
+    my $rh_6348 = get_6348($BO_ML_6348);
     my $rh_ml_dge = get_dge($ML_DGE);
     my $rh_bo_dge = get_dge($BO_DGE);
-    print_table($rh_5488,$rh_ml_dge,$rh_bo_dge);
+    print_table($rh_6348,$rh_ml_dge,$rh_bo_dge);
 }
 
 sub print_table {
-    my $rh_5488 = shift;
+    my $rh_6348 = shift;
     my $rh_ml_dge = shift;
     my $rh_bo_dge = shift;
     my %seen = ();
   
 my @skipped = ();
-    foreach my $id (keys %{$rh_5488}) {
+    foreach my $id (keys %{$rh_6348}) {
         next unless ($id =~ m/^ML/);
-        my $bid = $rh_5488->{$id};
+        my $bid = $rh_6348->{$id};
         $bid =~ s/\.t\d+$//;
         next unless ($rh_ml_dge->{$id} && $rh_bo_dge->{$bid});
         my $hit = 0;
@@ -60,7 +60,7 @@ sub get_dge {
     return \%dge;
 }
 
-sub get_5488 {
+sub get_6348 {
     my $file = shift;
     my %five488 = ();
     open IN, $file or die "cannot open $file:$!";

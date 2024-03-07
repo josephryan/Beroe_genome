@@ -39,7 +39,7 @@ sub identify_isoform_blockers {
         while (my $rec = $fp->get_record()) {
             $count++;
             my $id = JFR::Fasta->get_def_w_o_gt($rec->{'def'});
-            if ($id =~ m/(Bova1_4\.\d+\.g\d+)\.t\d+$/) {
+            if ($id =~ m/(Bova1_5\.\d+\.g\d+)\.t\d+$/) {
                 $bo{$1}++;
             } elsif ($id =~ m/^(ML\d+[a-z])$/) {
                 $ml{$1}++;

@@ -40,7 +40,7 @@ sub process_files {
         while (my $rec = $fp->get_record()) {
             $total++;
             my $id = JFR::Fasta->get_def_w_o_gt($rec->{'def'});
-            if ($id =~ m/^(Bova1_4\.\d+\.g\d+)\.t\d+/) {
+            if ($id =~ m/^(Bova1_5\.\d+\.g\d+)\.t\d+/) {
                 my $bid = $1;
                 next if ($seen{$bid});
                 $seen{$bid}++;
