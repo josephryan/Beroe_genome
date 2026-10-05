@@ -1,3 +1,7 @@
+### Note: I am no longer able to host BovaDB.  Data can be downloaded here:
+
+https://drive.google.com/drive/folders/1ho3C-uhynfnMHDD18WMe9CglLQA92EI5?usp=sharing
+
 # Beroe_genome
 
 Phylotocol, commands, scripts, and alignments used and produced as part of this study
